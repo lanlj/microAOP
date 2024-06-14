@@ -322,7 +322,8 @@ class Proxy {
             }
         }
 
-        $params = ['class' => $this->_mandatorClassName_, 'method' => $name, 'args' => $args];
+//        $params = ['class' => $this->_mandatorClassName_, 'method' => $name, 'args' => $args];
+        $params = ['instance' => $this->_mandator_, 'class' => $this->_mandatorClassName_, 'method' => $name, 'args' => $args];
         $funcs = self::_get_match_funcs_($this->_funcs_, $name);
         empty($this->_aspectMethods_["{$name}Before"]) || self::_exec_aspects_($this->_aspectMethods_["{$name}Before"], "{$name}Before", $params);
         empty($funcs['before']) || self::_exec_funcs_($funcs['before'], $params);
